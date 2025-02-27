@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class ScoreController : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class ScoreController : MonoBehaviour
         //シーン中のScoreTextを取得する
         this.scoreText = GameObject.Find("ScoreText");
 
+
     }
 
     // Update is called once per frame
@@ -38,19 +40,19 @@ public class ScoreController : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         // タグによって得点を変える
-        if (tag == "SmallStarTag")
+        if (collision.gameObject.tag == "SmallStarTag")
         {
             this.addscore1 += 2;
         }
-        else if (tag == "LargeStarTag")
+        else if (collision.gameObject.tag == "LargeStarTag")
         {
             this.addscore2 += 3;
         }
-        else if (tag == "SmallCloudTag")
+        else if (collision.gameObject.tag == "SmallCloudTag")
         {
             this.addscore3 += 5;
         }
-        else if (tag == "LargeCloudTag")
+        else if (collision.gameObject.tag == "LargeCloudTag")
         {
             this.addscore4 += 8;
         }
